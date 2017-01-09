@@ -1,0 +1,266 @@
+#Вам надо написать программу, порождающую случайные грамматически правильные, но бессмысленные тексты.
+#Слова для текстов должны быть взяты из отдельных txt-файлов, открываемых программой.
+#Текст должен представлять собой правильное хайку,
+#то есть стихотворение на русском языке из трёх строк без рифмы,
+#при этом длина первой строки должна быть 5 слогов, второй строки - 7 слогов, третьей строки - 5 слогов.
+#Количество предложений в таком тексте может быть любым.
+import random
+
+list_noun = [] #список существительных
+list_adjective = [] #список прилагательных
+list_adverb = [] #список наречий
+list_verb = [] #список глаголов
+
+def fillNoun(gender):
+    #функция формирует список существительных определённого рода
+    if gender == 'жен':
+        filename = 'Хайку_сущ_жен.txt'
+    else:
+        filename = 'Хайку_сущ_муж.txt'
+
+    f = open(filename, 'r', encoding = 'utf-8')
+    for r in f:
+        ln = r.split(',')
+        for i in ln:
+            if (i != '\n') and (i.strip() != ''):
+                list_noun.append(i.strip()) 
+    f.close()
+
+    
+def fillAdjective(gender):
+    #функция формирует список прилагательных определённого рода
+    if gender == 'жен':
+        filename = 'Хайку_прил_жен.txt'
+    else:
+        filename = 'Хайку_прил_муж.txt'
+
+    f = open(filename, 'r', encoding = 'utf-8')
+    for r in f:
+        ln = r.split(',')
+        for i in ln:
+            if (i != '\n') and (i.strip() != ''):
+                list_adjective.append(i.strip())
+    f.close()
+
+
+def fillAdverb():
+    #функция формирует список наречий
+    f = open('Хайку_наречия.txt', 'r', encoding = 'utf-8')
+    for r in f:
+        ln = r.split(',')
+        for i in ln:
+            if (i != '\n') and (i.strip() != ''):
+                list_adverb.append(i.strip())
+    f.close()
+
+    
+def fillVerb():
+    #функция формирует список глаголов
+    f = open('Хайку_глаголы.txt', 'r', encoding = 'utf-8')
+    for r in f:
+        ln = r.split(',')
+        for i in ln:
+            if (i != '\n') and (i.strip() != ''):
+                list_verb.append(i.strip())
+    f.close()
+
+
+def defineCountVowels(word):
+    #функция определяет количество слогов в слове
+    list_vowels = ['а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я'] #список гласных
+    count_syllable = 0 #количество слогов
+    for ch in word:
+        for v in list_vowels:
+            if ch == v:
+                count_syllable = count_syllable + 1
+
+    return count_syllable
+
+def defineMarkPunctuation():
+    #функция возвращает случайный знак препинания из небольшого списка
+    marks = [".", "?", "!", "..."]
+    return random.choice(marks)
+
+def defineRandomNoun(number):
+    #функция возвращает случайное существительное с определённым количеством слогов
+    #0 - любое количество слогов
+    if number == 0:
+        noun = random.choice(list_noun)
+    else:
+        list_noun_N = []
+        for i in list_noun:
+            syllable = defineCountVowels(i)
+            if syllable == number:
+                list_noun_N.append(i)
+
+        if list_noun_N != []:  
+            noun = random.choice(list_noun_N)
+        else:
+            noun = '*'
+            
+    return noun
+
+def defineRandomAdjective(number):
+    #функция возвращает случайное прилагательное с определённым количеством слогов
+    #0 - любое количество слогов
+    if number == 0:
+        adjective = random.choice(list_adjective)
+    else:
+        list_adjective_N = []
+        for i in list_adjective:
+            syllable = defineCountVowels(i)
+            if syllable == number:
+                list_adjective_N.append(i)
+
+        if list_adjective_N != []:
+            adjective = random.choice(list_adjective_N)
+        else:
+            adjective = '*'
+        
+    return adjective
+
+def defineRandomAdverb(number):
+    #функция возвращает случайное наречие с определённым количеством слогов
+    #0 - любое количество слогов
+    if number == 0:
+        adverb = random.choice(list_adverb)
+    else:
+        list_adverb_N = []
+        for i in list_adverb:
+            syllable = defineCountVowels(i)
+            if syllable == number:
+                list_adverb_N.append(i)
+
+        if list_adverb_N != []:
+            adverb = random.choice(list_adverb_N)
+        else:
+            adverb = '*'
+        
+    return adverb
+
+def defineRandomVerb(number):
+    #функция возвращает случайный глагол с определённым количеством слогов
+    #0 - любое количество слогов
+    if number == 0:
+        verb = random.choice(list_verb)
+    else:
+        list_verb_N = []
+        for i in list_verb:
+            syllable = defineCountVowels(i)
+            if syllable == number:
+                list_verb_N.append(i)
+
+        if list_verb_N != []:
+            verb = random.choice(list_verb_N)
+        else:
+            verb = '*'
+            
+    return verb
+    
+    
+def verseRows1():    
+    #прилагательное + существительное, наречие, глагол + существительное
+    #первая строка
+    adj1 = defineRandomAdjective(0)
+    syllableAdj = defineCountVowels(adj1)
+    syllableNoun = 5 - syllableAdj
+    if syllableNoun > 0:
+        n1 = defineRandomNoun(syllableNoun)
+    else:
+        adj1 = defineRandomAdjective(3)
+        n1 = defineRandomNoun(2)
+    
+    #вторая строка
+    adv2 = defineRandomAdverb(7)
+    
+    #третья строка
+    v3 = defineRandomVerb(0)
+    syllableVerb = defineCountVowels(v3)
+    syllableNoun = 5 - syllableVerb
+    if syllableNoun > 0:
+        n3 = defineRandomNoun(syllableNoun)
+    else:
+        v3 = defineRandomVerb(3)
+        n3 = defineRandomNoun(2)
+    
+    return adj1.capitalize() + ' ' + n1 + '...\n' + adv2.capitalize() + defineMarkPunctuation() + '\n' + v3.capitalize() + ' ' + n3 + defineMarkPunctuation()
+
+def verseRows2():    
+    #наречие + существительное, глагол + /прилагательное/ + существительное, глагол
+    #первая строка
+    adv1 = defineRandomAdverb(1)
+    n1 = defineRandomNoun(4)
+    
+    #вторая строка
+    v2 = defineRandomVerb(0)
+    syllableVerb = defineCountVowels(v2)
+    syllableNoun = 7 - syllableVerb
+    if syllableNoun > 0:
+        n2 = defineRandomNoun(syllableNoun)
+        adj2 = ''
+    else:
+        v2 = defineRandomVerb(3)
+        n2 = defineRandomNoun(2)
+        adj2 = ' ' + defineRandomAdjective(2)
+        
+    #третья строка
+    v3 = defineRandomVerb(5)
+    
+    return adv1.capitalize() + ' ' + n1 + '...\n' + v2.capitalize() + adj2 + ' ' + n2 + ',\n' + v3 + defineMarkPunctuation()
+
+
+def choiceVersion():
+    #функция выбирает версию схемы стиха
+    verse = random.choice([1,2])
+    if verse == 1:
+        return verseRows1()
+    else:
+        return verseRows2()
+    
+def verseFeminine():
+    #функция формирует строки из слов женского рода
+    fillNoun('жен')
+    fillAdjective('жен')  
+    return choiceVersion()   
+   
+def verseMasculine():
+    #функция формирует строки из слов мужского рода
+    fillNoun('муж')
+    fillAdjective('муж')
+    return choiceVersion()
+          
+def verse_haiku():
+    verse = random.choice([1,2])
+    if verse == 1:
+        return verseFeminine()
+    else:
+        return verseMasculine()
+
+
+#основной код
+fillAdverb()
+fillVerb()
+print(verse_haiku())
+
+
+#вот что получается:
+
+#Вдруг чудотворец...
+#Манит иллюзионист,
+#освобождает...
+
+#Вмиг таинственность...
+#Успокаивает явь,
+#программирует!
+
+#Чудесная глушь...
+#Предостерегающе...
+#Манит тишина?
+
+#Снежная зима...
+#Успокаивающе!
+#Сияет дева...
+
+#Вновь колокольчик...
+#Млеет островитянин,
+#программирует!
