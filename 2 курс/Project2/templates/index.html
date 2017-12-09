@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ударение</title>
+</head>
+<br>
+<h1 align="center"><tt>Социолингвистический опрос</tt></h1>
+<h2 align="center"><tt>Ударение</tt></h2>
+<style>
+	{ 
+	margin: 0;                        
+	padding: 0;
+	}
+	html { height: 100%; }
+	img {
+	border: none ;        
+	}
+	body {
+	background: #E6E6FA;
+	font: 16px/25px Times New Roman; 
+	color: #191970;
+	}
+	A {
+	color: #0000FF;
+	}
+	A:visited {
+	color: #000080;
+	}
+	A:hover {
+	color: #E0FFFF;
+	}
+	p {
+	margin-top: 0;
+	margin-bottom: 0;
+	}
+	button {
+	border: 0;
+	background: #6A5ACD;
+	border-radius: 2px;
+	box-shadow: 0 4px 0 #483D8B;
+	color: #191970;
+	cursor: pointer;
+	font: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 12px 20px;
+	transition: all .1s linear;
+	}
+	button:active {
+	box-shadow: 0 2px 0 #483D8B;
+	transform: translateY(3px);
+	}
+	.card-container {
+	height: 150px;
+	perspective: 600;
+	position: absolute;
+	width: 150px;
+	}
+	.card {
+	height: 100%;
+	position: absolute;
+	transform-style: preserve-3d;
+	transition: all 1s ease-in-out;
+	width: 100%;
+	}
+	.card:hover {
+	transform: rotateY(180deg);
+	}
+	.card .side {
+	backface-visibility: hidden;
+	height: 100%;
+	position: absolute;
+	width: 100%;
+	}
+	.card .back {
+	transform: rotateY(180deg);
+	font: 12px/14px Times New Roman;
+	text-align: justify;
+	}
+	.thumb figure {
+	width: 23%;
+	margin: 1%;
+	display: inline-block;
+	}
+</style>
+<body link="#191970">
+<p align="center"><tt><a href="http://127.0.0.1:5000/search" style="text-decoration: none;">&nbsp;Поиск&nbsp;</a><a href="http://127.0.0.1:5000/stats" style="text-decoration: none;">&nbsp;Статистика&nbsp;</a><a href="http://127.0.0.1:5000/json" style="text-decoration: none;">&nbsp;Данные json</a></tt></p>
+	<p><b>Добрый день! <br>Ответьте, пожалуйста, на следующие вопросы:</b></p><br>
+<form action="http://127.0.0.1:5000/thanks" method="GET">
+	Возраст:<br>
+	<input type="text" name="age"><br>
+	Пол:<br>
+	<input type="radio" name="gender" value="male" checked>Мужской<br>
+	<input type="radio" name="gender" value="female">Женский<br>
+	Место,где Вы прожили большую часть жизни:<br>
+	<input type="text" name="placeofliving"><br>
+	Родной язык:<br>
+	<input type="text" name="language"><br>
+	Образование:<br>
+	<input type="radio" name="education" value="undergraduate secondary" checked>Неполное среднее<br>
+	<input type="radio" name="education" value="secondary">Среднее<br>
+	<input type="radio" name="education" value="undergraduate higher">Неполное высшее<br>
+	<input type="radio" name="education" value="higher">Высшее<br>
+	<hr>
+	<br>
+	
+	
+	<p align="center"><b>Как бы Вы поставили ударение в следующих словах?</b></p><br>
+	<br>
+	<div class="thumb" style="margin-left:300px">
+		<figure>
+			<div class="card-container">
+				<div class="card">
+					<div class="side"><img src="static/aphasia.jpg" alt=""></div>
+					<div class="side back"><strong>Афазия - это</strong> локальное отсутствие или нарушение уже сформировавшейся речи. Возникает при органических поражениях речевых отделов коры головного мозга в результате перенесённых травм, опухолей, инсультов, воспалительных процессов и при некоторых психических заболеваниях.</div>
+				</div>
+			</div>
+		</figure>
+		<figure>
+			<div class="card-container">
+				<div class="card">
+					<div class="side"><img src="static/shizophasia.jpg" alt=""></div>
+					<div class="side back"><strong>Шизофазия - это</strong> нарушение структуры речи, при котором фразы строятся правильно, однако не несут никакой смысловой нагрузки, а содержание речи соответствует содержанию бреда.</div>
+				</div>
+			</div>
+		</figure>
+		<figure>
+			<div class="card-container">
+				<div class="card">
+					<div class="side"><img src="static/dyslexia.jpg" alt=""></div>
+					<div class="side back"><strong>Дислексия - это</strong> специфическая неспособность к обучению, имеющая нейрологическое происхождение. Характеризуется трудностями с точным или беглым распознаванием слов и недостаточными способностями в чтении и письме. Эти затруднения связаны с неполноценностью фонологических компонентов языка.</div>
+				</div>
+			</div>
+	</div>
+
+	Афазия:<br>
+	<input type="radio" name="aphasia" value="1">афАзия<br>	
+	<input type="radio" name="aphasia" value="2">афазИя<br>
+	<br>
+	Шизофазия:<br>
+	<input type="radio" name="shizophasia" value="1">шизофАзия<br>
+	<input type="radio" name="shizophasia" value="2">шизофазИя<br>
+	<br>
+	Дислексия:<br>
+	<input type="radio" name="dyslexia" value="1">дислЕксия<br>
+	<input type="radio" name="dyslexia" value="2">дислексИя<br>
+	<br>
+	<br>
+	<button type="submit">Отправить</button>
+	<button type="reset">Очистить</button>
+	<br>
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+ 

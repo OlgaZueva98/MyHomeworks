@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ударение</title>
+</head>
+<br>
+<h1 align="center"><tt>Социолинвистический опрос</tt></h1>
+<h2 align="center">Ударение</h2>
+<style>
+	body {
+	background: #E6E6FA;
+	font: 16px/25px Times New Roman; 
+	color: #191970;
+	}
+	A {
+	color: #0000FF;
+	}
+	A:visited {
+	color: #000080;
+	}
+	A:hover {
+	color: #E0FFFF;
+	}
+	p {
+	margin-top: 0;
+	margin-bottom: 0;
+	}
+	div {
+	text-align: center;
+	}
+	button {
+	background: #6A5ACD;
+	text-align: center;
+	color: #191970;
+	border-radius: 1px;
+	transition-property: background, border-radius;
+	transition-duration: .2s, 1s;
+	transition-timing-function: linear;
+	}
+	button:hover {
+	background: #DA70D6;
+	border-radius: 50%;
+	}
+</style>
+<body link="#191970">
+<p align="center"><tt><a href="http://127.0.0.1:5000/search" style="text-decoration: none;">&nbsp;Поиск&nbsp;</a><a href="http://127.0.0.1:5000/stats" style="text-decoration: none;">&nbsp;Статистика&nbsp;</a><a href="http://127.0.0.1:5000/json" style="text-decoration: none;">&nbsp;Данные json</a></tt></p>
+<br>
+<br>
+<p align="center"><b>Поиск по данным опроса.</b></p><br>
+<form action="http://127.0.0.1:5000/results" method="GET">
+    <p align="center"><label>Введите слово: <br><input type="text" name="word"></label></p><br>
+		<div class="button"><button type="submit">Искать</button></div>
+</form>
+</body>
+</html>

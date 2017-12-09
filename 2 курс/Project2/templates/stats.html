@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ударение</title>
+</head>
+<br>
+<h1 align="center"><tt>Социолингвистический опрос</tt></h1>
+<h2 align="center">Ударение</h2>
+<style>
+	body {
+	background: #E6E6FA;
+	font: 12px/18px Arial; 
+	color: #191970;
+	}
+	A {
+	color: #0000FF;
+	}
+	A:visited {
+	color: #000080;
+	}
+	A:hover {
+	color: #E0FFFF;
+	}
+	p {
+	margin-top: 0;
+	margin-bottom: 0;
+	}
+</style>
+<body link="#191970">
+<p align="center"><tt><a href="http://127.0.0.1:5000/search" style="text-decoration: none;">&nbsp;Поиск&nbsp;</a><a href="http://127.0.0.1:5000/stats" style="text-decoration: none;">&nbsp;Статистика&nbsp;</a><a href="http://127.0.0.1:5000/json" style="text-decoration: none;">&nbsp;Данные json</a></tt></p>
+<br>
+<p>Статистика ответов</p><br>
+<p>
+    {% for word, number in d.items() %}
+        <li>{{ word }}: {{ number }}</li>
+    {% endfor %}
+</p>
+
+</table>
+</body>
+</html>
