@@ -44,8 +44,8 @@ def statistics():
 
     stats = {'Минимальный возраст опрошенных': min(listAge),
             ' Максимальный возраст опрошенных': max(listAge),
-             'Количество мужчин': 'countGenderM',
-             'Количество женщин': 'countGenderW'}
+             'Количество мужчин': countGenderM,
+             'Количество женщин': countGenderW}
     return render_template('stats.html', number=number, stats=stats)
             
 
@@ -53,7 +53,7 @@ def statistics():
 def data():
     json_list = []
     js = json.dump(request.args, ensure_ascii=False)
-        json_list.append(js)
+    json_list.append(js)
     return render_template('json.html', js = json_list)
 
 @app.route('/search')
