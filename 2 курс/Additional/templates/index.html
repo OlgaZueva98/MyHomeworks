@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.min.css" >
+	<link rel="stylesheet" href="css/manual.css" >
+	<script src="js/respond.min.js"></script>
+    <title>Транслитерация</title>
+</head>
+<br>
+<h1 align="center"><tt>Транслитерация</tt></h1>
+<style>
+	{ 
+	margin: 0;                        
+	padding: 0;
+	}
+	html { height: 100%; }
+	img {
+	border: none ;        
+	}
+	body {
+	background: #E6E6FA;
+	font: 16px/25px Times New Roman; 
+	color: #191970;
+	}
+	A {
+	color: #0000FF;
+	}
+	A:visited {
+	color: #000080;
+	}
+	A:hover {
+	color: #E0FFFF;
+	}
+	p {
+	margin-top: 0;
+	margin-bottom: 0;
+	}
+	button {
+	background: #6A5ACD;
+	text-align: center;
+	color: #191970;
+	border-radius: 1px;
+	transition-property: background, border-radius;
+	transition-duration: .2s, 1s;
+	transition-timing-function: linear;
+	}
+	button:hover {
+	background: #DA70D6;
+	border-radius: 50%;
+	}
+	div {
+	text-align: center;
+	}
+</style>
+<body link="#191970">
+<!-- JS код -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12">
+		<p><tt><a href="http://127.0.0.1:5000" style="text-decoration: none;">&nbsp;Главная&nbsp;</a><a href="http://127.0.0.1:5000/news" style="text-decoration: none;">&nbsp;Новостной сайт&nbsp;</a><a href="http://127.0.0.1:5000/test" style="text-decoration: none;">&nbsp;Тест</a></tt></p>
+	</div>
+</div>
+<br><br>
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12"><p><strong>Погода в Скопье, Македония</strong></p></div><br><br>
+		<div class="col-lg-3 col-md-3 col-sm-6">
+			<p>Погодные условия: {{ conditions }}</p>
+		</div>	
+		<div class="col-lg-3 col-md-3 col-sm-6">
+			<p>Температура воздуха: {{ temp }}</p>
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-6">
+			<p> Минимальная температура: {{ temp_min }}</p>
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-6">
+			<p>Максимальная температура: {{ temp_max }}</p>
+		</div>
+</div>
+<hr>
+<form action="http://127.0.0.1:5000/transliteration" method="GET">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<p align="center"><label>Введите слово: <br><input type="text" name="word"></label></p><br>
+			<div class="button"><button type="submit">Транслитерировать</button></div>
+			<div class="button"><button type="reset">Очистить</button></div>
+		</div>
+	</div>
+</form>
+</body>
+</html>
