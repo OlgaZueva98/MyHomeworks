@@ -32,11 +32,10 @@ def transliteration():
     translit_wr = {}
     answer = ''
     with open('dict_.csv', 'r', encoding='utf-8') as file:
-        lines = file.read()
-        line = lines.split('\t')
-        for key, value in translit_wr:
-            translit_wr[key] = line[0]
-            translit_wr[value] = line[1]
+        for lines in file:
+            lines = lines[0:-1]
+            line = lines.split('\t')
+            translit_wr[line[1]] = line[3]
     with open('user_word.txt', 'w+', encoding='utf-8') as file:
         file.write(json.dumps(request.args['word'], ensure_ascii=False, indent = 4))
         for line in file.read():
