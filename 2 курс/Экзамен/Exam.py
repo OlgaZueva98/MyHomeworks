@@ -15,10 +15,11 @@ def load_pairs():
         for f in files:
             file_name = f.find(regexH)
             with open(file_name, 'r', encoding = 'utf-8') as file:
-                html = file.read()
-                thai_words = thai.findall(html)
-                eng_words = eng.findall(html)
-                thai_eng_dict[thai_words] = eng_words
+                for lines in file:
+                    html = lines.read()
+                    thai_words = thai.findall(html)
+                    eng_words = eng.findall(html)
+                    thai_eng_dict[thai_words] = eng_words
                                                                                                  
     
 def write_json():
