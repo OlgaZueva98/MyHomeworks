@@ -25,6 +25,7 @@ def write_json():
     with open('thai_eng_dict.txt', 'w', encoding = 'utf-8') as file:
         file.write(json.load(thai_eng_dict), ensure_ascii=False)
 
+        
 def main():
     if __name__ == '__main__':
         main()              
