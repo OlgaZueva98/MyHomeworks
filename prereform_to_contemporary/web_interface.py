@@ -91,10 +91,10 @@ def web_converter():
                         new_text, changes, wrong_changes, _ = Processor.process_text(input_text, 0, META['old_new_delimiters'][META['current_delimiters_text']], check_brackets)
                     with codecs.open('log', 'w', 'utf-8') as ou:
                         ou.write(changes)
-                    print changes, 'THIS'
+                    print(changes, 'THIS')
                     name = os.path.splitext(META['filename'])[0]
                     suffix = os.path.splitext(META['filename'])[1]
-                    print 'GET NAME'
+                    print('GET NAME')
                     if suffix == '':
                         suffix = '.txt'
                     new_filename = name + "_transliterated" + suffix
