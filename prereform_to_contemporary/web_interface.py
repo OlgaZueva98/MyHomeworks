@@ -101,13 +101,13 @@ def web_converter():
                     log_filename = name + '_log.txt'
                     fnpath = tmp_folder + '/' + new_filename
                     lpath = tmp_folder + '/' + log_filename
-                    print 'GET PATH'
+                    print('GET PATH')
                     with codecs.open(fnpath, 'w', 'utf-8') as ou1:
                         ou1.write(new_text)
-                        print 'WRITE DATA'
+                        print('WRITE DATA')
                     with codecs.open(lpath, 'w', 'utf-8') as ou2:
                         ou2.write(changes)
-                        print changes, 'WRITE LOG'
+                        print(changes, 'WRITE LOG')
                 except:
                     m = 'Error: file ' + secure_filename(el.filename)
                     errors.append(m)
