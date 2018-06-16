@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+        PrereformToContemporary
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="/Users/el/git_ptc/prereform_to_contemporary/static/css/ptc_styles.css">
+<script src="/Users/el/git_ptc/prereform_to_contemporary/static/js/ptc_actions.js"></script>
+</head>
+<body onload="submits()">
+  <a href="{{url_for('web_converter')}}" id="back" class="backlink labels">Вернуться к транслитератору</a>
+  <div class="settings-main">
+    <div class="settings-content">
+        <form action='{{url_for("get_settings")}}' enctype="multipart/form-data" method="post">
+                <div class="content-div">
+                        <h2 id="title_set">Настройки вывода</h2>
+                </div>
+                <div class="content-div">
+                    <h4 id="txt_set">
+                        Для данных в формате .txt (загружаемые файлы и вводимые вручную тексты)
+                    </h4>
+                </div>
+                <div>
+                  <table>
+                    <tr>
+                      <td>
+                        <input type="text" name="br_text00" class="right-inp" value="<choice><reg>" disabled>
+                        пример
+                        <input type="text" name="br_text01" class="center-inp" value="</reg><orig>" disabled>
+                        примеръ
+                        <input type="text" name="br_text02" value="</orig></choice>" disabled>
+                      </td>
+                      <td>
+                        <input type="radio" name="text_settings" value="tei" id="tei_txt"><span class="labels"> TEI</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input type="text" name="br_text10" value="" disabled>
+                        пример
+                        <input type="text" name="br_text11" class="center-inp" value="{" disabled>
+                        примеръ
+                        <input type="text" name="br_text12" value="}" disabled>
+                      </td>
+                      <td>
+                        <input type="radio" name="text_settings" value="simple" id="s_txt"><span class="labels" id="simple_txt"> Простой</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input type="text" class="right-inp" name="br_text20" value="{{v1_txt}}">
+                        пример
+                        <input type="text" name="br_text21" class="center-inp" value="{{v2_txt}}">
+                        примеръ
+                        <input type="text" name="br_text22" value="{{v3_txt}}">
+                      </td>
+                      <td>
+                        <input type="radio" name="text_settings" value="manual_text" id="m_txt"><span class="labels" id="manual_txt"> Задать вручную</span>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="content-div">
+                    <h4 id="xml_set">
+                        Для данных в формате xml/html
+                    </h4>
+                </div>
+                <div>
+                  <table>
+                    <tr>
+                      <td>
+                        <input type="text" name="br_xml00" class="right-inp" value="<choice><reg>" disabled>
+                        пример
+                        <input type="text" name="br_xml01" class="center-inp" value="</reg><orig>" disabled>
+                        примеръ
+                        <input type="text" name="br_xml02" value="</orig></choice>" disabled>
+                      </td>
+                      <td>
+                        <input type="radio" name="xml_settings" value="tei" id="tei_xml"><span class="labels"> TEI</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input type="text" name="br_xml10" value="" disabled>
+                        пример
+                        <input type="text" name="br_xml11" class="center-inp" value="{" disabled>
+                        примеръ
+                        <input type="text" name="br_xml11" value="}" disabled>
+                      </td>
+                      <td>
+                        <input type="radio" name="xml_settings" value="simple" id="s_xml"><span class="labels" id="simple_xml"> Простой</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input type="text" name="br_xml20" class="right-inp" value="{{v1_xml}}">
+                        пример
+                        <input type="text" name="br_xml21" class="center-inp" value="{{v2_xml}}">
+                        примеръ
+                        <input type="text" name="br_xml22" value="{{v3_xml}}">
+                      </td>
+                      <td>
+                        <input type="radio" name="xml_settings" value="manual_xml" id="m_xml"><span class="labels" id="manual_xml"> Задать вручную</span>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <div class="content-div gap-top20">
+                  <input type="submit" name="save_settings" class="newstype-button" value="Сохранить настройки" id="save_button" onclick="click()">
+                </div>
+
+        </form>
+  </div>
+    <div class="horizontal-block">
+        <div class="language-button default-language" id="ru_button" onclick="change_language_settings('ru')">
+          <div class="language-content"><span>ru</span></div>
+        </div>
+        <div class="language-button" id="en_button" onclick="change_language_settings('en')">
+          <div class="language-content"><span>en</span></div>
+        </div>
+    </div>
+  </div>
+</body>
+</html>
