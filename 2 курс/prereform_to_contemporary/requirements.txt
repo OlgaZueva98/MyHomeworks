@@ -1,7 +1,0 @@
-Flask==0.12.1
-pymorphy2==0.8
-pymystem3==0.1.5
-requests==2.13.0
-Werkzeug==0.12.2
-Flask-ReCaptcha==0.4.2
-future==0.16.0
